@@ -31,7 +31,8 @@ def main():
 
     # -------------------Main loop under this line----------------------------------------
 
-    workbook.create_excel_doc()
+    workbook.create_excel_doc('info', 'Monday', 'Tuesday', 'Wednesday',
+                              'Thursday', 'Friday', 'Saturday', 'Sunday')
 
     # Comment out this so i wont flood the mailbox while testing
     # mail_tester.compose_email(mail_recipient, mail_sender, user_name, text, attach)

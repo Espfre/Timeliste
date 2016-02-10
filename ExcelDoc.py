@@ -1,23 +1,30 @@
 import os
 import datetime
-from xlwt import Workbook
+from openpyxl import Workbook
+
 
 class ExcelDoc:
 
     def __init__(self):
         pass
 
-    def create_excel_doc(self):
+    def create_excel_doc(self, infosheet, monday, tuesday, wednesday,
+                         thursday, friday, saturday, sunday):
 
         workbook = Workbook()
-        sheet1 = workbook.add_sheet('Info')
-        sheet2 = workbook.add_sheet('Monday')
-        sheet3 = workbook.add_sheet('Tuesday')
-        sheet4 = workbook.add_sheet('Wednesday')
-        sheet5 = workbook.add_sheet('Thursday')
-        sheet6 = workbook.add_sheet('Friday')
-        sheet7 = workbook.add_sheet('Saturday')
-        sheet7 = workbook.add_sheet('Sunday')
+        sheet1 = workbook.create_sheet(infosheet)
+        sheet2 = workbook.create_sheet(monday)
+        sheet3 = workbook.create_sheet(tuesday)
+        sheet4 = workbook.create_sheet(wednesday)
+        sheet5 = workbook.create_sheet(thursday)
+        sheet6 = workbook.create_sheet(friday)
+        sheet7 = workbook.create_sheet(saturday)
+        sheet8 = workbook.create_sheet(sunday)
 
-        workbook.save('workbook_test.xls')
+        workbook.save('workbook_test.xlsx')
+
+        return
+
+    def fill_excel_doc(self):
+
         return
