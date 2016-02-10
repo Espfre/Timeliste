@@ -1,4 +1,5 @@
 import ConfigParser
+import datetime
 
 
 class Config:
@@ -12,8 +13,12 @@ class Config:
         :param path:
         :return:
         """
-
+        dt = datetime.datetime.today()
         config = ConfigParser.ConfigParser()
+
+        config.add_section('General')
+        config.set('General', 'Weeknumber', dt.strftime('%U'))
+
         config.add_section('Settings')
         config.set('Settings', 'Font', 'Courier')
         config.set('Settings', 'font_size', '10')
@@ -28,6 +33,22 @@ class Config:
         with open(path, 'wb') as config_file:
             config.write(config_file)
 
+    def update_week(self, path):
+        """
+        read, update, delete config
+        :param path:
+        :return:
+        """
+
+        config = ConfigParser.ConfigParser()
+        config.read(path)
+
+        dt = datetime.datetime.today()
+        config.set('General', 'Weeknumber', dt.strftime('%U'))
+
+        with open(path, 'wb') as config_file:
+            config.write(config_file)
+
     def update_config(self, path):
         """
         read, update, delete config
@@ -39,14 +60,14 @@ class Config:
         config.read(path)
 
         # read some values in the config file
-        font = config.get('Settings', 'font_size')
-        font_size = config.get('Settings', 'font_size')
+        # font = config.get('Settings', 'font_size')
+        # font_size = config.get('Settings', 'font_size')
 
         # change a value in the config
-        config.set('Settings', 'font_size', '12')
+        # config.set('Settings', 'font_size', '12')
 
         # delete a value from the config
-        config.remove_option('Settings', 'font_style')
+        # config.remove_option('Settings', 'font_style')
 
         # write changes back to the config file
         with open(path, 'wb') as config_file:

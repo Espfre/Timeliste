@@ -6,6 +6,7 @@ import Mail
 import Config
 import ExcelDoc
 
+
 def main():
 
     # detects if settings.ini is present and creates one if not
@@ -31,10 +32,10 @@ def main():
 
     # -------------------Main loop under this line----------------------------------------
 
-    workbook.create_excel_doc('info', 'Monday', 'Tuesday', 'Wednesday',
-                              'Thursday', 'Friday', 'Saturday', 'Sunday')
+    workbook.fill_excel_doc(config_path)
 
     # Comment out this so i wont flood the mailbox while testing
+
     # mail_tester.compose_email(mail_recipient, mail_sender, user_name, text, attach)
 
 
