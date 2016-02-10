@@ -3,16 +3,16 @@
 import os
 import ConfigParser
 import Mail
-import CreateConfig
+import Config
 
 
 def main():
-
+    create_config = Config.Config()
     config_path = 'settings.ini'
 
     # detects if a config file is present and creates one if not
     if not os.path.exists(config_path):
-        CreateConfig.create_config(config_path)
+        create_config.create_config(config_path)
 
     config = ConfigParser.ConfigParser()
     config.read(config_path)
