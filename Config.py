@@ -28,10 +28,11 @@ class Config:
         with open(path, 'wb') as config_file:
             config.write(config_file)
 
-
     def update_config(self, path):
         """
         read, update, delete config
+        :param path:
+        :return:
         """
 
         config = ConfigParser.ConfigParser()

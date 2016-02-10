@@ -4,11 +4,11 @@ import os
 import ConfigParser
 import Mail
 import Config
-
+import ExcelDoc
 
 def main():
 
-    # detects if a config file is present and creates one if not
+    # detects if settings.ini is present and creates one if not
 
     create_config = Config.Config()
     config_path = 'settings.ini'
@@ -27,9 +27,13 @@ def main():
     text = 'input something here later'
     attach = 'template-timeliste.ods'
     mail_tester = Mail.Mail()
+    workbook = ExcelDoc.ExcelDoc()
 
     # -------------------Main loop under this line----------------------------------------
 
+    workbook.create_excel_doc()
+
+    # Comment out this so i wont flood the mailbox while testing
     # mail_tester.compose_email(mail_recipient, mail_sender, user_name, text, attach)
 
 
