@@ -8,7 +8,6 @@ def create_config(path):
     :return:
     """
 
-
     config = ConfigParser.ConfigParser()
     config.add_section('Settings')
     config.set('Settings', 'Font', 'Courier')
