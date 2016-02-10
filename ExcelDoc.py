@@ -24,7 +24,7 @@ class ExcelDoc:
 
         return workbook
 
-    def fill_excel_doc(self, config_path):
+    def fill_excel_doc(self, config_path, filename):
 
         config = ConfigParser.ConfigParser()
         config.read(config_path)
@@ -45,7 +45,6 @@ class ExcelDoc:
         info['A2'] = 'Employee: ' + config.get('UserInfo', 'username')
         info['B1'] = None
         info['C1'] = None
-
-        workbook.save('weeknumber.xlsx')
+        workbook.save(filename)
 
         return

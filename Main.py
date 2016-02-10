@@ -26,16 +26,16 @@ def main():
     mail_sender = config.get('UserInfo', 'usermail')
     mail_recipient = config.get('MailRecipient', 'recipient')
     text = 'input something here later'
-    attach = 'template-timeliste.ods'
+    filename = 'weeknumber.xlsx'
     mail_tester = Mail.Mail()
     workbook = ExcelDoc.ExcelDoc()
 
     # -------------------Main loop under this line----------------------------------------
 
-    workbook.fill_excel_doc(config_path)
+    workbook.fill_excel_doc(config_path, filename)
 
-    # Comment out this so i wont flood the mailbox while testing
-    # mail_tester.compose_email(mail_recipient, mail_sender, user_name, text, attach)
+    # Commented out this so i wont flood the mailbox while testing
+    # mail_tester.compose_email(mail_recipient, mail_sender, user_name, text, filename)
 
 
 if __name__ == "__main__":
