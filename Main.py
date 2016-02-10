@@ -35,7 +35,6 @@ def main():
     workbook.fill_excel_doc(config_path)
 
     # Comment out this so i wont flood the mailbox while testing
-
     # mail_tester.compose_email(mail_recipient, mail_sender, user_name, text, attach)
 
 
