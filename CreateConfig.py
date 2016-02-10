@@ -1,7 +1,7 @@
 import ConfigParser
 
 
-def createconfig(path):
+def create_config(path):
     """
     create a config file
     :param path:
@@ -22,6 +22,3 @@ def createconfig(path):
     with open(path, 'wb') as config_file:
         config.write(config_file)
 
-if __name__ == '__main__':
-    path = 'settings.ini'
-    createconfig(path)

@@ -18,7 +18,7 @@ class Mail:
     def __init__(self):
         pass
 
-    def createmessage(self, sender, to, subject, message_text, attach):
+    def create_message(self, sender, to, subject, message_text, attach):
         message = MIMEMultipart(message_text)
         message['to'] = to
         message['from'] = sender
@@ -33,7 +33,7 @@ class Mail:
 
         return {'raw': base64.urlsafe_b64encode(message.as_string())}
 
-    def sendmessage(self, service, user_id, message, attach):
+    def send_message(self, service, user_id, message, attach):
         try:
             message = (service.users().messages().send(userId=user_id, body=message)
                 .execute())
@@ -67,5 +67,5 @@ class Mail:
         gmail_service = build('gmail', 'v1', http=http)
         to_addr = to
         from_addr = sender
-        message = self.createmessage(from_addr, to_addr, subject, body_text, attach)
-        message = self.sendmessage(gmail_service, 'me', message, attach)
+        message = self.create_message(from_addr, to_addr, subject, body_text, attach)
+        message = self.send_message(gmail_service, 'me', message, attach)

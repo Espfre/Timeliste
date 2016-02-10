@@ -12,7 +12,7 @@ def main():
 
     # detects if a config file is present and creates one if not
     if not os.path.exists(config_path):
-        CreateConfig.createconfig(config_path)
+        CreateConfig.create_config(config_path)
 
     config = ConfigParser.ConfigParser()
     config.read(config_path)
@@ -28,7 +28,7 @@ def main():
 
     # -------------------Main loop under this line----------------------------------------
 
-    mail_tester.compose_email(mail_recipient, mail_sender, user_name, text, attach)
+    # mail_tester.compose_email(mail_recipient, mail_sender, user_name, text, attach)
 
 
 if __name__ == "__main__":
