@@ -1,6 +1,6 @@
 from openpyxl import Workbook
-import datetime
 import ConfigParser
+import Config
 
 
 class ExcelDoc:
@@ -28,6 +28,10 @@ class ExcelDoc:
 
         config = ConfigParser.ConfigParser()
         config.read(config_path)
+
+        config_update = Config.Config()
+        config_update.update_week(config_path)
+
         workbook = self.create_excel_doc('Info', 'Monday', 'Tuesday', 'Wednesday',
                                          'Thursday', 'Friday', 'Saturday', 'Sunday')
         info = workbook.active
@@ -37,11 +41,9 @@ class ExcelDoc:
             sheet['B1'] = 'Description of work done'
             sheet['C1'] = 'Amount of hours'
 
-        dt = datetime.datetime.today()
-        info['A1'] = config.get('General', 'weeknumber')
-        info['A2'] = dt.strftime('%U')
-        info['B1'] = 'Employee'
-        info['B2'] = config.get('UserInfo', 'username')
+        info['A1'] = 'This week is: ' + config.get('General', 'weeknumber')
+        info['A2'] = 'Employee: ' + config.get('UserInfo', 'username')
+        info['B1'] = None
         info['C1'] = None
 
         workbook.save('weeknumber.xlsx')
